@@ -1,6 +1,8 @@
 package controller;
 
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -9,14 +11,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
+import model.Tm.customerTm;
 import model.customer;
 
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 
 public class CustomerformController {
@@ -60,8 +61,34 @@ public class CustomerformController {
         loadCustomerTable();
     }
     private void loadCustomerTable() {
+        ObservableList<customerTm> tmList = FXCollections.observableArrayList();
+        String sql = "select * FROM customer";
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root", "shivika123");
+            Statement stm = connection.createStatement();
+            ResultSet result = stm.executeQuery(sql);
 
+            while (result.next()){
+                Button btn = new Button("Delete");
+                customerTm c = new customerTm(
+                        result.getString(1),
+                        result.getString(2),
+                        result.getString(3),
+                        result.getDouble(4),
+                        btn
+
+                );
+
+                tmList.add(c);
+            }
+            connection.close();
+
+            tblCustomer.setItems(tmList);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void updateButtonOnAction(javafx.event.ActionEvent actionEvent) {
@@ -85,6 +112,9 @@ public class CustomerformController {
             if (result>0){
                 new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
             }
+
+            connection.close();
+
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
