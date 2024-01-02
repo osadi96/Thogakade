@@ -58,9 +58,7 @@ public class CustomerformController {
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
         loadCustomerTable();
-
     }
-
     private void loadCustomerTable() {
 
 
