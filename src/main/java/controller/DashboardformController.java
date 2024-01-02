@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -19,6 +20,8 @@ import java.time.format.DateTimeFormatter;
 public class DashboardformController {
     public AnchorPane pane;
     public Label lblTime;
+    private Stage primaryStage;
+
     public void initialize(){
         calculateTime();
     }
@@ -33,13 +36,13 @@ public class DashboardformController {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
-    public void customerButtonOnAction(ActionEvent actionEvent) {
-       Stage stage = (Stage) pane.getScene().getWindow();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/Customerform.fxml"))));
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+    public void customerButtonOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("View/Customerform.fxml"))));
+        stage.setTitle("CUSTOMER FORM");
+        javafx.scene.image.Image image = new Image("Img/img1.png");
+        primaryStage.getIcons().add(image);
+        stage.show();
         }
-    }
 }
