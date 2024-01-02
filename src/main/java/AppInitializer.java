@@ -15,9 +15,10 @@ public class AppInitializer extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("view/Dashboardform.fxml"))));
-        primaryStage.setTitle("MAINMENU");
+        primaryStage.setTitle("MAIN MENU");
         Image image = new Image("Img/img1.png");
         primaryStage.getIcons().add(image);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }
