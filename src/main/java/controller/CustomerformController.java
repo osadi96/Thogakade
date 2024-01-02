@@ -7,6 +7,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import model.customer;
 
+
 import java.awt.event.ActionEvent;
 
 public class CustomerformController {
@@ -51,7 +52,7 @@ public class CustomerformController {
     }
 
     public void saveButtonOnAction(javafx.event.ActionEvent actionEvent) {
-        customer c = new customer (txtID.getText(),
+        customer c = new customer(txtID.getText(),
                 txtName.getText(),
                 txtAddress.getText(),
                 Double.parseDouble(txtSalary.getText())
