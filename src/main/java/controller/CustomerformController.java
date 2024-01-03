@@ -3,20 +3,24 @@ package controller;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Tm.customerTm;
 import model.customer;
 
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.sql.*;
 
 
@@ -94,14 +98,11 @@ public class CustomerformController {
                         result.getString(3),
                         result.getDouble(4),
                         btn
-
                 );
 
-                btn.setOnAction(actionEvent -> {
+                btn.SetOnAction(actionEvent -> {
                     deleteCustomer(c.getId());
                 });
-
-
                 tmList.add(c);
             }
             connection.close();
@@ -201,4 +202,13 @@ public class CustomerformController {
         txtID.setEditable(true);
     }
 
+    public void backButtonOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) tblCustomer.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -12,7 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.awt.*;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -40,6 +39,7 @@ public class DashboardformController {
     public void customerButtonOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("View/Customerform.fxml"))));
+        stage.setResizable(true);
         stage.setTitle("CUSTOMER FORM");
         Image image = new Image("Img/img1.png");
         primaryStage.getIcons().add(image);
@@ -48,8 +48,9 @@ public class DashboardformController {
     }
 
     public void itemButtonOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) lblTime.getScene().getWindow();
+        Stage stage = (Stage) pane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("View/Itemform.fxml"))));
+        stage.setResizable(true);
         stage.setTitle("ITEM FORM");
         Image image = new Image("Img/img1.png");
         primaryStage.getIcons().add(image);
