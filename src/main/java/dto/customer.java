@@ -1,4 +1,4 @@
-package model;
+package dto;
 
 public class customer {
     private String id;
