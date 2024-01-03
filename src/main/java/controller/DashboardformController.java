@@ -41,8 +41,18 @@ public class DashboardformController {
         Stage stage = (Stage) pane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("View/Customerform.fxml"))));
         stage.setTitle("CUSTOMER FORM");
-        javafx.scene.image.Image image = new Image("Img/img1.png");
+        Image image = new Image("Img/img1.png");
         primaryStage.getIcons().add(image);
-        stage.show();
-        }
+        primaryStage.show();
+
+    }
+
+    public void itemButtonOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) lblTime.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("View/Itemform.fxml"))));
+        stage.setTitle("ITEM FORM");
+        Image image = new Image("Img/img1.png");
+        primaryStage.getIcons().add(image);
+        primaryStage.show();
+    }
 }

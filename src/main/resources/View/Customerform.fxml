@@ -8,9 +8,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="513.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerformController">
+<AnchorPane prefHeight="514.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerformController">
    <children>
       <Label layoutX="26.0" layoutY="40.0" text="Customer ID" />
       <Label layoutX="141.0" layoutY="40.0" text="Customer Name" />
@@ -20,8 +20,8 @@
       <TextField fx:id="txtName" layoutX="141.0" layoutY="65.0" prefHeight="25.0" prefWidth="149.0" />
       <TextField fx:id="txtAddress" layoutX="332.0" layoutY="65.0" prefHeight="25.0" prefWidth="219.0" />
       <TextField fx:id="txtSalary" layoutX="588.0" layoutY="65.0" prefHeight="25.0" prefWidth="114.0" />
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="9.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="Button" />
-      <ImageView fitHeight="57.0" fitWidth="25.0" layoutX="19.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="4.0" layoutY="2.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="25.0" prefWidth="45.0" text="Button" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Img/img2.png" />
          </image>
@@ -38,5 +38,10 @@
         </columns>
       </TableView>
       <TextField layoutX="662.0" layoutY="474.0" onAction="#reloadButtonOnAction" prefHeight="25.0" prefWidth="60.0" text="RELOAD" />
+      <Label alignment="CENTER" layoutX="1.0" layoutY="-4.0" prefHeight="25.0" prefWidth="738.0" text="CUSTOMER FORM">
+         <font>
+            <Font name="Consolas Bold" size="32.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

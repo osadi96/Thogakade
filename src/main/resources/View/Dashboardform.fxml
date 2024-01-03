@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9b7e05;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardformController">
    <children>
       <Button layoutX="34.0" layoutY="65.0" mnemonicParsing="false" onAction="#customerButtonOnAction" style="-fx-background-color: #ffcdd2;" text="Customer">
@@ -18,5 +17,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Button layoutX="34.0" layoutY="119.0" mnemonicParsing="false" onAction="#itemButtonOnAction" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #ffcdd2;" text="Item">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
