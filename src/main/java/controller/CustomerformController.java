@@ -35,7 +35,7 @@ public class CustomerformController {
     private TextField txtSalary;
 
     @FXML
-    private TableView <customerTm> tblCustomer;
+    private TableView<customerTm> tblCustomer;
 
     @FXML
     private TableColumn colId;
@@ -52,7 +52,7 @@ public class CustomerformController {
     @FXML
     private TableColumn colOption;
 
-    public void initialize(){
+    public void initialize() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -86,7 +86,7 @@ public class CustomerformController {
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(sql);
 
-            while (result.next()){
+            while (result.next()) {
                 Button btn = new Button("Delete");
                 customerTm c = new customerTm(
                         result.getString(1),
@@ -97,7 +97,7 @@ public class CustomerformController {
 
                 );
 
-                btn.setOnAction (actionEvent-> {
+                btn.setOnAction(actionEvent -> {
                     deleteCustomer(c.getId());
                 });
 
@@ -113,18 +113,18 @@ public class CustomerformController {
     }
 
     private void deleteCustomer(String id) {
-        String sql = "DELETE from customer WHERE id='"+id+"'";
+        String sql = "DELETE from customer WHERE id='" + id + "'";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root", "shivika123");
             Statement stm = connection.createStatement();
             int result = stm.executeUpdate(sql);
-            if (result>0){
-                new Alert(Alert.AlertType.INFORMATION,"Customer Deleted!").show();
+            if (result > 0) {
+                new Alert(Alert.AlertType.INFORMATION, "Customer Deleted!").show();
                 loadCustomerTable();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Something went wrong!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
             }
 
             connection.close();
@@ -141,15 +141,15 @@ public class CustomerformController {
                 txtAddress.getText(),
                 Double.parseDouble(txtSalary.getText())
         );
-        String sql = "UPDATE customer SET name='"+c.getName()+"', address='"+c.getAddress()+"', salary="+c.getSalary()+" WHERE id='"+c.getId()+"'";
+        String sql = "UPDATE customer SET name='" + c.getName() + "', address='" + c.getAddress() + "', salary=" + c.getSalary() + " WHERE id='" + c.getId() + "'";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root", "shivika123");
             Statement stm = connection.createStatement();
             int result = stm.executeUpdate(sql);
-            if (result>0){
-                new Alert(Alert.AlertType.INFORMATION,"Customer "+c.getId()+" Updated!").show();
+            if (result > 0) {
+                new Alert(Alert.AlertType.INFORMATION, "Customer " + c.getId() + " Updated!").show();
                 loadCustomerTable();
                 clearFields();
             }
@@ -165,15 +165,15 @@ public class CustomerformController {
                 txtAddress.getText(),
                 Double.parseDouble(txtSalary.getText())
         );
-        String sql = "INSERT INTO customer values('"+c.getId()+"','"+c.getName()+"','"+c.getAddress()+"',"+c.getSalary()+")";
+        String sql = "INSERT INTO customer values('" + c.getId() + "','" + c.getName() + "','" + c.getAddress() + "'," + c.getSalary() + ")";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root", "shivika123");
             Statement stm = connection.createStatement();
             int result = stm.executeUpdate(sql);
-            if (result>0){
-                new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
+            if (result > 0) {
+                new Alert(Alert.AlertType.INFORMATION, "Customer Saved!").show();
                 loadCustomerTable();
                 clearFields();
             }
@@ -193,15 +193,12 @@ public class CustomerformController {
     }
 
     private void clearFields() {
-        private void clearFields() {
-            tblCustomer.refresh();
-            txtSalary.clear();
-            txtAddress.clear();
-            txtName.clear();
-            txtID.clear();
-            txtID.setEditable(true);
-        }
-
+        tblCustomer.refresh();
+        txtSalary.clear();
+        txtAddress.clear();
+        txtName.clear();
+        txtID.clear();
+        txtID.setEditable(true);
     }
 
 }
